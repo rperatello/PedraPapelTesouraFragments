@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">PedraPapelTesouraFragments</string>
+    <string name="txtOpponentLabel">Quantidade de Oponentes: </string>
+    <string name="opponent1Txt">Você</string>
+    <string name="opponent2Txt">Oponente 1</string>
+    <string name="opponent3Txt">Oponente 2</string>
+    <string name="btSectionTxt">Escolha sua jogada</string>
+    <string name="win">Você venceu a jogada!</string>
+    <string name="lost">Você perdeu a jogada!</string>
+    <string name="toTie">Vocês empataram a jogada!</string>
+    <string name="op2Win">Oponente 2 venceu a jogada!</string>
+    <string name="op1Win">Oponente 1 ganhou  a jogada!</string>
+    <string name="lbRounds">Quantidade de jogadas:</string>
+    <string name="stSave">SALVAR</string>
+    <string name="stCancel">CANCELAR</string>
+    <string name="btStart">Iniciar Jogo</string>
 </resources>
