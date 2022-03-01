@@ -90,4 +90,101 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/resultSection"
+        android:layout_width="match_parent"
+        android:height="50dp"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:padding="8dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:layout_marginTop="260dp"
+        app:layout_constraintBottom_toTopOf="@id/lbBtSection"
+        app:layout_constraintTop_toBottomOf="@id/imagesSection2" />
+
+    <ImageView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/resultDivider"
+        android:src="@android:drawable/divider_horizontal_dark"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:scaleType="fitXY"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="2dp"
+        android:paddingTop="1dp"
+        android:background="#000"
+        android:layout_marginTop="310dp"
+        app:layout_constraintBottom_toTopOf="@id/lbBtSection"
+        app:layout_constraintEnd_toEndOf="@id/resultSection" />
+
+    <TextView
+        android:id="@+id/lbBtSection"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginTop="370dp"
+        android:text="@string/btSectionTxt"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@id/btSection" />
+
+    <LinearLayout
+        android:id="@+id/btSection"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="400dp"
+        app:layout_constraintBottom_toBottomOf="parent" >
+
+        <ImageButton
+            android:id="@+id/btStone"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@mipmap/pedra"
+            android:background="@color/white"
+            app:tint="@color/design_default_color_on_secondary" />
+
+        <ImageButton
+            android:id="@+id/btPaper"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@mipmap/papel"
+            android:background="@color/white"
+            app:tint="@color/design_default_color_on_secondary" />
+
+        <ImageButton
+            android:id="@+id/btScissor"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:src="@mipmap/tesoura"
+            android:background="@color/white"
+            app:tint="@color/design_default_color_on_secondary" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="@string/btStart" />
+
 </FrameLayout>
