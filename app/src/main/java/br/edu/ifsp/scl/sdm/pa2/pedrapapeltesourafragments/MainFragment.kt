@@ -74,9 +74,8 @@ class MainFragment : Fragment() {
             play()
         }
 
-
-
-
+        if (gameSettings.isTwoPlayers)
+                fragmentMainViewBinding.imagesSection2.setVisibility(View.GONE)
 
         return fragmentMainViewBinding.root
     }
