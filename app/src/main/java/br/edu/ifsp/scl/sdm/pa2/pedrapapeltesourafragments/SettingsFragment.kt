@@ -1,5 +1,7 @@
 package br.edu.ifsp.scl.sdm.pa2.pedrapapeltesourafragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +16,8 @@ class SettingsFragment: Fragment() {
     private lateinit var gameSettings: GameSettings
     private lateinit var gameSettingsBackup: GameSettings
 
+    lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -22,6 +26,16 @@ class SettingsFragment: Fragment() {
         fragmentSettingsViewBinding = FragmentSettingsBinding.inflate(inflater, container, false)
 
         fragmentSettingsViewBinding.saveBt.setOnClickListener{
+            gameSettings.isTwoPlayers = fragmentSettingsViewBinding.radio1Rb.isChecked
+            gameSettings.round = if(fragmentSettingsViewBinding.round1Rb.isChecked) 1 else if(fragmentSettingsViewBinding.round3Rb.isChecked) 3 else 5
+            val editor = sharedPreferences.edit()
+            editor.putBoolean("IS_TWO_PLAYERS", gameSettings.isTwoPlayers)
+            editor.putInt("NUMBER_OF_ROUNDS", gameSettings.round)
+            editor.apply()
+            Log.v(
+                getString(R.string.app_name),
+                "Roger | " + gameSettings.isTwoPlayers.toString()+" | " + gameSettings.round.toString()
+            )
             activity?.supportFragmentManager?.popBackStack();
         }
 
@@ -29,10 +43,11 @@ class SettingsFragment: Fragment() {
             activity?.supportFragmentManager?.popBackStack();
         }
 
-        //TODO("Excluir linha 33 e fazer implementar 34 e 35")
         gameSettings = GameSettings(true, 1)
-//        gameSettings = (intent.getSerializableExtra(MainActivity.EXTRA_CONFIGURACOES) ?: GameSettings(true, 1)) as GameSettings
-//        gameSettingsBackup = (intent.getSerializableExtra(MainActivity.EXTRA_CONFIGURACOES) ?: GameSettings(true, 1)) as GameSettings
+
+        sharedPreferences = activity!!.applicationContext.getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
+        gameSettings.isTwoPlayers = sharedPreferences.getBoolean("IS_TWO_PLAYERS", true)
+        gameSettings.round = sharedPreferences.getInt("NUMBER_OF_ROUNDS", 1)
 
         Log.v(
             getString(R.string.app_name),
@@ -44,4 +59,5 @@ class SettingsFragment: Fragment() {
 
         return fragmentSettingsViewBinding.root
     }
+
 }

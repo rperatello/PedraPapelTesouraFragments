@@ -1,5 +1,7 @@
 package br.edu.ifsp.scl.sdm.pa2.pedrapapeltesourafragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -27,6 +29,8 @@ class MainFragment : Fragment() {
     val POINTS_OPPONENT_3 = "POINTS_OPPONENT_3"
     val ROUNDS_FINISHED = "ROUNDS_FINISHED"
 
+    lateinit var sharedPreferences: SharedPreferences
+
     private var p1 = 0
     private var p2 = 0
     private var p3 = 0
@@ -47,6 +51,10 @@ class MainFragment : Fragment() {
         // Inflate the layout for this fragment
         // val fragmentMainViewBinding = FragmentMainBinding.inflate(inflater, container, false)
         fragmentMainViewBinding = FragmentMainBinding.inflate(inflater, container, false)
+
+        sharedPreferences = activity!!.applicationContext.getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
+        gameSettings.isTwoPlayers = sharedPreferences.getBoolean(IS_TWO_PLAYERS, true)
+        gameSettings.round = sharedPreferences.getInt(NUMBER_OF_ROUNDS, 1)
 
         fragmentMainViewBinding.btStart.setOnClickListener{
             startGame();
